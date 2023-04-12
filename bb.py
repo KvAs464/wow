@@ -1,6 +1,7 @@
 import logging
 
 from aiogram import Bot, Dispatcher, executor, types
+# from aiogram.methods.send_audio import SendAudio
 
 API_TOKEN = '5957160345:AAHSojKtcnuM61tMq3djdwdIp3pxZztp4Bk'
 
@@ -24,9 +25,11 @@ async def echo(message: types.Message):
     # old style:
     # await bot.send_message(message.chat.id, message.text)
 
-    await message.answer(message.text)  
+    # await message.answer(message.text)  
     if message.text =="phonk":
-        bot.send_audio(message.chat.id, open('phonk.mp3', 'rb'))
+        await bot.send_audio(message.chat.id, open('phonk.mp3', 'rb'))
+    if message.text =="soul":
+        await bot.send_audio(message.chat.id, open('George Michael - Careless Whisper.mp3', 'rb'))
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
